@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Truyum.Models.Items>
+
+@{
+    ViewData["Title"] = "GetAllItems";
+}
+<style>
+    table {
+        font-family: "Lucida Console", Courier, monospace;
+        border-collapse: collapse;
+        width: 60%;
+        border: 1px solid #eb8d3a;
+    }
+
+    td, th {
+        border: 1px solid #dbcbcb;
+        text-align: left;
+        padding: 12px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #c8d8d7c9;
+    }
+
+</style>
+<h1>GetAllItems</h1>
+
+<p>
+    <a asp-action="AddNewItem">Add New Item</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FreeDelivery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FreeDelivery)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+
+
+                @Html.ActionLink("Edit", "Update", new { id = item.ItemId }) |
+
+                @Html.ActionLink("Details", "GetItem", new { id = item.ItemId }) |
+                @Html.ActionLink("Delete", "DeleteItem", new { id = item.ItemId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
